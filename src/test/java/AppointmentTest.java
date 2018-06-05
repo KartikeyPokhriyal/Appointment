@@ -11,8 +11,19 @@ public class AppointmentTest {
     public void shouldAddMyAppointment() {
         Appointment doctor_appointment = new Appointment("Katy", new Date(2018, 5, 12, 12,45));
         Scheduler patrick = new Scheduler(doctor_appointment);
+        patrick.addAppointment();
 
         assertTrue(patrick.isPresent(doctor_appointment));
+    }
+
+    @Test
+    public void shouldNotifyMeAboutMyAppointment() {
+        Appointment doctor_appointment = new Appointment("Katy", new Date(2018, 5, 12, 12,45));
+
+        Scheduler patrick = new Scheduler(doctor_appointment);
+        patrick.addAppointment();
+
+        assertEquals("You missed the appointment", patrick.notifyMe());
     }
 
 }
